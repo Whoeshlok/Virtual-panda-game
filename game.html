@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Pet Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>VIRTUAL PANDA GAME</h1>
+        
+        <div class="pet-container">
+            <div class="pet-image">
+                <div class="pet-hearts"></div>
+                <div class="pet-zzz"></div>
+                <div class="pet-ball"></div>
+                  <div class="panda">
+                      <div class="face">
+                        <div class="l-eye"></div>
+                        <div class="r-eye"></div>
+                        <div class="l-ear"></div>
+                        <div class="r-ear"></div>
+                        <div class="nose"></div>
+                        <div class="mouth"></div>
+                  
+                      </div>
+                      <div class="l-hand"></div>
+                  <div class="r-hand"></div>
+                  <div class="l-leg"></div>
+                  <div class="r-leg"></div>
+                    </div> 
+                <div id="moodIndicator" class="mood-indicator">Mood: Happy</div>
+            </div>
+            
+            <div class="pet-name">
+                <input type="text" id="petNameInput" placeholder="Enter panda name">
+                <button id="setNameBtn">Set Name</button>
+                <h2 id="petNameDisplay">Your Pet</h2>
+            </div>
+
+            <div class="pet-stats">
+                <div class="stat">
+                    <span>Hunger: </span>
+                    <div class="progress-bar">
+                        <div id="hungerBar" class="progress"></div>
+                    </div>
+                </div>
+                <div class="stat">
+                    <span>Happiness: </span>
+                    <div class="progress-bar">
+                        <div id="happinessBar" class="progress"></div>
+                    </div>
+                </div>
+                <div class="stat">
+                    <span>Energy: </span>
+                    <div class="progress-bar">
+                        <div id="energyBar" class="progress"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="feedBtn" class="action-btn">🍗 Feed</button>
+                <button id="playBtn" class="action-btn">🕹️ Play</button>
+                <button id="sleepBtn" class="action-btn">💤 Sleep</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+    <audio id="gameAudio" autoplay loop>
+        <source src="audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Ensure audio plays when page loads
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('gameAudio');
+            audio.volume = 0.5; // Set volume to 50%
+            
+            // Try to play audio
+            audio.play().catch(function(error) {
+                console.log('Audio autoplay failed:', error);
+                // Add a play button if autoplay fails
+                const playButton = document.createElement('button');
+                playButton.textContent = '🎵 Play Music';
+                playButton.style.cssText = 'position: fixed; top: 10px; right: 10px; z-index: 1000; padding: 10px; background: #43e97b; color: white; border: none; border-radius: 5px; cursor: pointer;';
+                playButton.onclick = function() {
+                    audio.play();
+                    this.style.display = 'none';
+                };
+                document.body.appendChild(playButton);
+            });
+        });
+    </script>
+</body>
+</html> 
